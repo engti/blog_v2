@@ -5,7 +5,7 @@ date: 2017-12-26
 categories: ["R"]
 tags: ["adobe_analytics", "rstats", "segments"]
 banner : "img/banners/banner-2.jpg"
-description : "Auto generate segments in Adobe Analytics at scale. "
+description : "Auto generate segments in Adobe Analytics at scale."
 ---
 
 ```{r setup, include=FALSE}
