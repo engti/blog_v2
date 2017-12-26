@@ -62,7 +62,7 @@ paginate = 10
     viewMorePostLink = "/blog/"
     author = "Robin Browne"
     defaultKeywords = ["analytics"]
-    defaultDescription = "Site Analytics Blog: Adobe Analytics, DTM, Google Analytics,GTM"
+    defaultDescription = "Digital Analytics Blog: A walk through of site analytics topics including tagging, reporting and personalisation.   "
 
     # Google Maps API key (if not set will default to not passing a key.)
     googleMapsApiKey = "AIzaSyCGlVQJmwATAZivFbzHqrxOk0gsqwhWkX4"
@@ -83,9 +83,9 @@ paginate = 10
     # - you're done. Happy mailing!
     #
     # Enable the contact form by entering your Formspree.io email
-    email = "rbrowne@@gmail.com"
+    email = "rbrowne@gmail.com"
 
-    about_us = "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>"
+    about_us = "<p>Rushed thoughts on site analytics enablement, reporting and analysis, personalisation.</p>"
     copyright = "Copyright (c) 2017, Robin Browne; all rights reserved."
 
     # Format dates with Go's time formatting
