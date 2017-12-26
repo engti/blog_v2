@@ -5,13 +5,23 @@ date: 2017-12-26
 categories: ["R"]
 tags: ["adobe_analytics", "rstats", "segments"]
 banner : "img/banners/banner-2.jpg"
+description : "Auto generate segments in Adobe Analytics at scale. "
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+For any given site, you would typically have many content groups. For example, you are a car manufacturer, and your site has car models that covers a range in the market. How would you see the overlap in interest between your different car models?
 
-## Problem Statement
+```{r echo=FALSE}
+knitr::asis_output(htmltools::htmlPreserve("
+<!--more-->
+"))
+```
+
+
+##Problem Statement
+
 -	For a site with n products
 -	Show the most popular combination of top y products viewed within a visit
 o	And by combination I don’t mean within the same page, what I am looking for is within the same visit in any order
