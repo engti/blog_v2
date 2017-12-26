@@ -1,5 +1,5 @@
 baseurl = "https://blog.datasea.in"
-title = "DataSea_Blog"
+title = "DataSea Blog"
 theme = "hugo-universal-theme"
 languageCode = "en-us"
 # Site language. Available translations in the theme's `/i18n` directory.
@@ -143,10 +143,10 @@ paginate = 10
 [params.see_more]
     enable = true
     icon = "fa fa-file-code-o"
-    title = "Do you want to see more?"
-    subtitle = "We have prepared for you more than 40 different HTML pages, including 5 variations of homepage."
-    link_url = "#"
-    link_text = "Check other homepages"
+    title = "Would you like to know more?"
+    subtitle = "Curious to see how we can make this fit together for your organisation?"
+    link_url = "/contact/"
+    link_text = "Get in touch"
 
 [params.clients]
     enable = true
