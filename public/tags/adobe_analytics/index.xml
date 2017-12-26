@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>R on DataSea Blog</title>
-    <link>/categories/r/</link>
-    <description>Recent content in R on DataSea Blog</description>
+    <title>Adobe_analytics on DataSea Blog</title>
+    <link>/tags/adobe_analytics/</link>
+    <description>Recent content in Adobe_analytics on DataSea Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2017, Robin Browne; all rights reserved.</copyright>
     <lastBuildDate>Tue, 26 Dec 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/adobe_analytics/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>

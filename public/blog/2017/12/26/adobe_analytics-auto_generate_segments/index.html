@@ -6,7 +6,7 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hugo</title>
+  <title>Adobe Analytics API: Automated Segment Generation</title>
   <meta name="author" content="" />
 
   
@@ -68,7 +68,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="alternate" href="/index.xml" type="application/rss+xml" title="DataSea Blog">
 
   
-  <meta property="og:title" content="Hugo" />
+  <meta property="og:title" content="Adobe Analytics API: Automated Segment Generation" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/" />
   <meta property="og:image" content="img/LogoMakr.png" />
@@ -95,9 +95,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="/img/LogoMakr.png" alt="Hugo logo" class="hidden-xs hidden-sm">
-                    <img src="/img/LogoMakr-small.png" alt="Hugo logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Hugo - go to homepage</span>
+                    <img src="/img/LogoMakr.png" alt="Adobe Analytics API: Automated Segment Generation logo" class="hidden-xs hidden-sm">
+                    <img src="/img/LogoMakr-small.png" alt="Adobe Analytics API: Automated Segment Generation logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Adobe Analytics API: Automated Segment Generation - go to homepage</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -170,7 +170,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Hugo</h1>
+                <h1>Adobe Analytics API: Automated Segment Generation</h1>
             </div>
         </div>
     </div>
@@ -179,99 +179,81 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <div id="content">
             <div class="container">
+
                 <div class="row">
+
                     
 
-                    <div class="col-md-9" id="blog-listing-medium">
+                    <div class="col-md-9" id="blog-post">
 
+                        <p class="text-muted text-uppercase mb-small text-right">By <a href="#">Robin Browne</a> | December 26, 2017</p>
+
+                        <div id="post-content">
+                          <div id="problem-statement" class="section level2">
+<h2>Problem Statement</h2>
+<ul>
+<li>For a site with n products</li>
+<li>Show the most popular combination of top y products viewed within a visit o And by combination I don’t mean within the same page, what I am looking for is within the same visit in any order</li>
+</ul>
+<p>A quick way to do this is to use the segment overlap feature Adobe Analytics. But you can only do 2 segments at a time. I wanted something that scales up much better and can do things like find the overlap for the top 10, 20, n products. And should be easily adaptable across projects.</p>
+</div>
+<div id="what-it-looks-like-but-is-not" class="section level2">
+<h2>What it looks like, but is not</h2>
+<p>Also as far as I am aware, this is different from Product Affinity because that is done at a transaction level, and all the products are contained within the same call from the Thank You page. What I was looking for was product viewed separately somewhere within the same visit [or even visitor level if need be].</p>
+</div>
+<div id="result" class="section level2">
+<h2>Result</h2>
+<p>Let me showcase the results of the scripts that I have built first: * The below contains the car models from the Kia site for an unspecified time range + I have masked the product names since I am not sure if that’s shareable within the DL * The overlap percentage shows the percentage of visits in which both products were seen * As you can see the product8 model shows the highest overlap with other models + It’s an SUV with an accessible price range + It’s associated models seem to be sedans and cross over vehicles below its price range + So one observation could be that, this is a prime target for upselling</p>
+</div>
+<div id="how-to-use-it-for-your-projects" class="section level2">
+<h2>How to Use it for your Projects</h2>
+<ul>
+<li>The solution is created in R</li>
+<li>The script and a guide are contained at this Github <a href="https://github.com/engti/analytics_segment_overlap">link</a></li>
+</ul>
+<p>I have put it up as a Github project, so that you can easily pull it using RStudio. A handy guide is to be found <a href="https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN">here</a>.</p>
+<p>Do note: Since it’s creating overlapping segments it takes a while to run. For instance, for 10 products it needs to make 44 API calls, for 20 products 188 API calls and so on. So if you increase the number of products, the number of requests scales exponentially.</p>
+</div>
+<div id="how-you-can-help" class="section level2">
+<h2>How you can help</h2>
+<p>Just by itself, the report only showcases some correlation. It doesn’t give you supporting evidence for why such a correlation exists. If we can automate report pull from other elements it might make the report more meaningful. And since it’s on Github, you can submit pull requests to enhance the script.</p>
+</div>
+<div id="current-to-dos" class="section level2">
+<h2>Current To Dos</h2>
+<ul>
+<li>The final percentage calculation is currently done manually, automate that in next build</li>
+<li>Visualise the results better within R</li>
+<li>Make it more plug and play for different projects</li>
+</ul>
+</div>
+
+                        </div>
                         
                         
-                        <section class="post">
-                            <div class="row">
-                                <div class="col-md-4">
-                                  <div class="image">
-                                      <a href="/blog/2015/10/02/linked-post/">
-                                          
-                                          <img src="/img/banners/banner-4.jpg" class="img-responsive" alt="">
-                                          
-                                      </a>
-                                  </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h2><a href="/blog/2015/10/02/linked-post/">Linked post</a></h2>
-                                    <div class="clearfix">
-                                        <p class="author-category">
-                                          
-                                          By <a href="#">John Doe</a>
-                                          
-                                          
-                                          
-                                          in <a href="/categories/programming">programming</a>
-                                          
-                                          
-
-                                        </p>
-                                        <p class="date-comments">
-                                            <a href="/blog/2015/10/02/linked-post/"><i class="fa fa-calendar-o"></i> October 2, 2015</a>
-                                        </p>
-                                    </div>
-                                    <p class="intro">I&rsquo;m a linked post in the menu. You can add other posts by adding the following line to the frontmatter:
-menu = &quot;main&quot;  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mauris nulla, vestibulum vel auctor sed, posuere eu lorem. Aliquam consequat augue ut accumsan mollis. Suspendisse malesuada sodales tincidunt. Vivamus sed erat ac augue bibendum porta sed id ipsum. Ut mollis mauris eget ligula sagittis cursus. Aliquam id pharetra tellus.</p>
-                                    <p class="read-more"><a href="/blog/2015/10/02/linked-post/" class="btn btn-template-main">Continue reading</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
-                        
-                        <section class="post">
-                            <div class="row">
-                                <div class="col-md-4">
-                                  <div class="image">
-                                      <a href="/blog/2015/08/03/hugo-is-for-lovers/">
-                                          
-                                          <img src="/img/banners/banner-3.jpg" class="img-responsive" alt="">
-                                          
-                                      </a>
-                                  </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h2><a href="/blog/2015/08/03/hugo-is-for-lovers/">Hugo is for lovers</a></h2>
-                                    <div class="clearfix">
-                                        <p class="author-category">
-                                          
-                                          
-                                          
-                                          in <a href="/categories/pseudo">pseudo</a>
-                                          
-                                          
-
-                                        </p>
-                                        <p class="date-comments">
-                                            <a href="/blog/2015/08/03/hugo-is-for-lovers/"><i class="fa fa-calendar-o"></i> August 3, 2015</a>
-                                        </p>
-                                    </div>
-                                    <p class="intro">Step 1. Install Hugo Goto hugo releases and download the appropriate version for your os and architecture.
-Save it somewhere specific as we will be using it in the next step.
-More complete instructions are available at installing hugo
-Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
-Follow the following steps:
- Clone the hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:</p>
-                                    <p class="read-more"><a href="/blog/2015/08/03/hugo-is-for-lovers/" class="btn btn-template-main">Continue reading</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-datasea-in" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
                         
 
-                        <ul class="pager">
-                            
-                            <li class="previous disabled"><a href="#">&larr; Newer</a></li>
-                            
-
-                            
-                            <li class="next disabled"><a href="#">Older &rarr;</a></li>
-                            
-                        </ul>
                     </div>
                     
 
@@ -319,19 +301,7 @@ Follow the following steps:
     <div class="panel-body">
         <ul class="nav nav-pills nav-stacked">
             
-            <li><a href="/categories/lorem">lorem (1)</a>
-            </li>
-            
-            <li><a href="/categories/programming">programming (2)</a>
-            </li>
-            
-            <li><a href="/categories/pseudo">pseudo (1)</a>
-            </li>
-            
-            <li><a href="/categories/r">r (2)</a>
-            </li>
-            
-            <li><a href="/categories/starting">starting (1)</a>
+            <li><a href="/categories/r">r (1)</a>
             </li>
             
         </ul>
@@ -356,37 +326,10 @@ Follow the following steps:
             <li><a href="/tags/adobe_analytics"><i class="fa fa-tags"></i> adobe_analytics</a>
             </li>
             
-            <li><a href="/tags/go"><i class="fa fa-tags"></i> go</a>
-            </li>
-            
-            <li><a href="/tags/golang"><i class="fa fa-tags"></i> golang</a>
-            </li>
-            
-            <li><a href="/tags/hugo"><i class="fa fa-tags"></i> hugo</a>
-            </li>
-            
-            <li><a href="/tags/ipsum"><i class="fa fa-tags"></i> ipsum</a>
-            </li>
-            
-            <li><a href="/tags/plot"><i class="fa fa-tags"></i> plot</a>
-            </li>
-            
-            <li><a href="/tags/programming"><i class="fa fa-tags"></i> programming</a>
-            </li>
-            
-            <li><a href="/tags/r-markdown"><i class="fa fa-tags"></i> r-markdown</a>
-            </li>
-            
-            <li><a href="/tags/regression"><i class="fa fa-tags"></i> regression</a>
-            </li>
-            
             <li><a href="/tags/rstats"><i class="fa fa-tags"></i> rstats</a>
             </li>
             
             <li><a href="/tags/segments"><i class="fa fa-tags"></i> segments</a>
-            </li>
-            
-            <li><a href="/tags/theme"><i class="fa fa-tags"></i> theme</a>
             </li>
             
         </ul>
@@ -407,6 +350,7 @@ Follow the following steps:
 
                 </div>
                 
+
             </div>
             
         </div>
@@ -449,27 +393,14 @@ Follow the following steps:
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
-                        <a href="/blog/2017/12/26/2015-07-23-r-rmarkdown/">
+                        <a href="/blog/">
                           
-                            <img src="/img/banners/banner-2.jpg" class="img-responsive" alt="RMD Test">
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="/blog/2017/12/26/2015-07-23-r-rmarkdown/">RMD Test</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="image same-height-always">
-                        <a href="/blog/2015/10/10/migrate-from-jekyll/">
-                          
-                            <img src="/img/banners/banner-5.jpg" class="img-responsive" alt="Migrate from Jekyll">
+                            <img src="/img/placeholder.png" class="img-responsive" alt="Blogs">
                           
                         </a>
                     </div>
                     <div class="name same-height-always">
-                        <h5><a href="/blog/2015/10/10/migrate-from-jekyll/">Migrate from Jekyll</a></h5>
+                        <h5><a href="/blog/">Blogs</a></h5>
                     </div>
                 </div>
                 
