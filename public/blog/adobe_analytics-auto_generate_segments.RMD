@@ -14,6 +14,8 @@ library(knitr)
 ```
 For any given site, you would typically have many content groups. For example, you are a car manufacturer, and your site has car models that covers a range in the market. How would you see the overlap in interest between your different car models?
 
+Adobe Analytics' workspace feature allows you to create segment overlap report to see how the users are converging. But unfortunately, you can only do 3 segments, and cannot easily generate *n* combinations of segments.
+
 ```{r img_workspace, fig.width = 2,out.width="80%",fig.align='center'}
 # Small fig.width
 include_graphics("/img/adobe_segment_post/adobe_workspace.PNG")
