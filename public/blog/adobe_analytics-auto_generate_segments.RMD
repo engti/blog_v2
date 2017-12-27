@@ -14,7 +14,7 @@ library(knitr)
 ```
 For any given site, you would typically have many content groups. For example, you are a car manufacturer, and your site has car models that covers a range in the market. How would you see the overlap in interest between your different car models?
 
-```{r img_workspace, fig.width = 2}
+```{r img_workspace, fig.width = 2,out.width="80%",fig.align='center'}
 # Small fig.width
 include_graphics("/img/adobe_segment_post/adobe_workspace.PNG")
 ```
@@ -49,6 +49,113 @@ Let me showcase the results of the scripts that I have built first:
 I have put it up as a Github project, so that you can easily pull it using RStudio.  A handy guide is to be found [here](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN).
 
 Do note: Since it’s creating overlapping segments it takes a while to run. For instance, for 10 products it needs to make 44 API calls, for 20 products 188 API calls and so on. So if you increase the number of products, the number of requests scales exponentially.
+
+## The Code
+First we load the libraries
+
+```{r code_library,echo=T,eval=FALSE}
+  ## load library ----
+    library(tidyverse)
+    library(RSiteCatalyst)
+    library(jsonlite)
+```
+
+#### Authenticate with Adobe Analytics
+The following function from **RSiteCatalyst** allows yout to authenticate against your Adobe account credentials.
+
+```{r code_auth,echo=T,eval=FALSE}
+  SCAuth("your api user id","your api passphrase")
+```
+
+If you have admin access to Adobe Analytics, it'll be available in your user profile page. Otherwise, ask your account admin to add you to the Web Services API group.
+
+#### Define Metadata
+This is a simple showcase, and as such only 2 things are defined here:
+```{r code_metadata,echo=T,eval=FALSE}
+  ## define metadata ----
+  date_range  <- list(
+    "start" = "2017-12-03",
+    "end" = "2017-12-09"
+  )
+  
+  ## define the report suite to pull data from
+  rsid <- "xxxxxxx-xx-x"
+```
+
+#### Defining the segment ingredients
+The whole idea is to dynamically generate segments. In that case, what are your ingredients? In this particular case, we have our model names stored in an *eVar*. So we need the top models for the time range defined. We simply make a *QueueRanked* report which tells us the *top **n** * models which we can use to generate the overlapping segment conditions.
+```{r code_segdef,echo=T,eval=FALSE}
+## get ingredients for segment ----
+  ## get car model name in this instance
+  product_id <- QueueRanked(
+    reportsuite.id = rsid,
+    date.from = date_range$start,
+    date.to = date_range$end,
+    metrics = "visits",
+    elements = "evarX",
+    top = 10
+  )  
+```
+
+
+
+#### Segment Overlap API request
+Now that we know our top models, we want to create segments for the top combinations. We're creating a series of segments with *Model A* + *Model B* in them. We loop through the model combinations, be careful, the number of combinations increases exponentially so it would take a lot of time to execute if you have a large set of inputs.
+
+```{r code_segCall,echo=T,eval=FALSE}
+## calculate overlap in visits for each model combination
+  for (i in 1:(nrow(product_id)-1)) {
+    for (j in (i + 1) : nrow(product_id)) {
+      product_segment <- c(product_id$name[i],product_id$name[j])
+      ## create segment
+      mySegment<- list(container=list(type=unbox("visits"),
+                                      rules = data.frame(
+                                        name = "models",
+                                        element = "evar7",
+                                        operator = "contains",
+                                        value = product_segment
+                                      )))
+      ## get data
+      # df1 <- QueueRanked(
+      #   report.suite = "",
+      #   element = c("geoCity"),
+      #   metrics = "",
+      #   date.from = "",
+      #   date.to = "",
+      #   inline.segment = mySegment)
+      
+      df2 <- QueueOvertime(
+        reportsuite.id =  rsid,
+        date.from = date_range$start,
+        date.to = date_range$end,
+        metrics = "visits",
+        date.granularity = "week",
+        segment.inline =  mySegment)
+      
+      df3 <- df2 %>% select(visits) %>%
+        mutate(
+          model1 = product_id$name[i],
+          model2 = product_id$name[j]
+        ) %>% select(model1,model2,visits)
+      
+      if(i == 1 & j == 2){
+        car_segment_data <- df3
+      }else{
+        car_segment_data <- rbind(car_segment_data,df3)
+      }
+   
+    }
+    paste0(i,j)
+  }
+```
+
+#### Results
+This is a sample output, as I cannot share proprietary data out here. And the results have been visualised in Excel, but hopefully in the future this step would also be done within R. 
+
+```{r img_result, fig.width = 2,out.width="80%",fig.align='center'}
+# Small fig.width
+include_graphics("/img/adobe_segment_post/adobe_segment_result.PNG")
+```
 
 ### How you can help
 Just by itself, the report only showcases some correlation. It doesn’t give you supporting evidence for why such a correlation exists. If we can automate report pull from other elements it might make the report more meaningful. And since it’s on Github, you can submit pull requests to enhance the script.

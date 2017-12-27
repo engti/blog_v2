@@ -192,7 +192,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                         <div id="post-content">
                           <p>For any given site, you would typically have many content groups. For example, you are a car manufacturer, and your site has car models that covers a range in the market. How would you see the overlap in interest between your different car models?</p>
-<p><img src="/img/adobe_segment_post/adobe_workspace.PNG" /><!-- --></p>
+<p><img src="/img/adobe_segment_post/adobe_workspace.PNG" width="80%" style="display: block; margin: auto;" /></p>
 <div id="problem-statement" class="section level3">
 <h3>Problem Statement</h3>
 <ul>
@@ -218,9 +218,102 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>I have put it up as a Github project, so that you can easily pull it using RStudio. A handy guide is to be found <a href="https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN">here</a>.</p>
 <p>Do note: Since it’s creating overlapping segments it takes a while to run. For instance, for 10 products it needs to make 44 API calls, for 20 products 188 API calls and so on. So if you increase the number of products, the number of requests scales exponentially.</p>
 </div>
+<div id="the-code" class="section level2">
+<h2>The Code</h2>
+<p>First we load the libraries</p>
+<pre class="r"><code>  ## load library ----
+    library(tidyverse)
+    library(RSiteCatalyst)
+    library(jsonlite)</code></pre>
+<div id="authenticate-with-adobe-analytics" class="section level4">
+<h4>Authenticate with Adobe Analytics</h4>
+<p>The following function from <strong>RSiteCatalyst</strong> allows yout to authenticate against your Adobe account credentials.</p>
+<pre class="r"><code>  SCAuth(&quot;your api user id&quot;,&quot;your api passphrase&quot;)</code></pre>
+<p>If you have admin access to Adobe Analytics, it’ll be available in your user profile page. Otherwise, ask your account admin to add you to the Web Services API group.</p>
+</div>
+<div id="define-metadata" class="section level4">
+<h4>Define Metadata</h4>
+<p>This is a simple showcase, and as such only 2 things are defined here:</p>
+<pre class="r"><code>  ## define metadata ----
+  date_range  &lt;- list(
+    &quot;start&quot; = &quot;2017-12-03&quot;,
+    &quot;end&quot; = &quot;2017-12-09&quot;
+  )
+  
+  ## define the report suite to pull data from
+  rsid &lt;- &quot;xxxxxxx-xx-x&quot;</code></pre>
+</div>
+<div id="defining-the-segment-ingredients" class="section level4">
+<h4>Defining the segment ingredients</h4>
+<p>The whole idea is to dynamically generate segments. In that case, what are your ingredients? In this particular case, we have our model names stored in an <em>eVar</em>. So we need the top models for the time range defined. We simply make a <em>QueueRanked</em> report which tells us the <em>top <strong>n</strong> </em> models which we can use to generate the overlapping segment conditions.</p>
+<pre class="r"><code>## get ingredients for segment ----
+  ## get car model name in this instance
+  product_id &lt;- QueueRanked(
+    reportsuite.id = rsid,
+    date.from = date_range$start,
+    date.to = date_range$end,
+    metrics = &quot;visits&quot;,
+    elements = &quot;evarX&quot;,
+    top = 10
+  )  </code></pre>
+</div>
+<div id="segment-overlap-api-request" class="section level4">
+<h4>Segment Overlap API request</h4>
+<p>Now that we know our top models, we want to create segments for the top combinations. We’re creating a series of segments with <em>Model A</em> + <em>Model B</em> in them. We loop through the model combinations, be careful, the number of combinations increases exponentially so it would take a lot of time to execute if you have a large set of inputs.</p>
+<pre class="r"><code>## calculate overlap in visits for each model combination
+  for (i in 1:(nrow(product_id)-1)) {
+    for (j in (i + 1) : nrow(product_id)) {
+      product_segment &lt;- c(product_id$name[i],product_id$name[j])
+      ## create segment
+      mySegment&lt;- list(container=list(type=unbox(&quot;visits&quot;),
+                                      rules = data.frame(
+                                        name = &quot;models&quot;,
+                                        element = &quot;evar7&quot;,
+                                        operator = &quot;contains&quot;,
+                                        value = product_segment
+                                      )))
+      ## get data
+      # df1 &lt;- QueueRanked(
+      #   report.suite = &quot;&quot;,
+      #   element = c(&quot;geoCity&quot;),
+      #   metrics = &quot;&quot;,
+      #   date.from = &quot;&quot;,
+      #   date.to = &quot;&quot;,
+      #   inline.segment = mySegment)
+      
+      df2 &lt;- QueueOvertime(
+        reportsuite.id =  rsid,
+        date.from = date_range$start,
+        date.to = date_range$end,
+        metrics = &quot;visits&quot;,
+        date.granularity = &quot;week&quot;,
+        segment.inline =  mySegment)
+      
+      df3 &lt;- df2 %&gt;% select(visits) %&gt;%
+        mutate(
+          model1 = product_id$name[i],
+          model2 = product_id$name[j]
+        ) %&gt;% select(model1,model2,visits)
+      
+      if(i == 1 &amp; j == 2){
+        car_segment_data &lt;- df3
+      }else{
+        car_segment_data &lt;- rbind(car_segment_data,df3)
+      }
+   
+    }
+    paste0(i,j)
+  }</code></pre>
+</div>
+<div id="results" class="section level4">
+<h4>Results</h4>
+<p>This is a sample output, as I cannot share proprietary data out here. And the results have been visualised in Excel, but hopefully in the future this step would also be done within R.</p>
+<p><img src="/img/adobe_segment_post/adobe_segment_result.PNG" width="80%" style="display: block; margin: auto;" /></p>
+</div>
 <div id="how-you-can-help" class="section level3">
 <h3>How you can help</h3>
 <p>Just by itself, the report only showcases some correlation. It doesn’t give you supporting evidence for why such a correlation exists. If we can automate report pull from other elements it might make the report more meaningful. And since it’s on Github, you can submit pull requests to enhance the script.</p>
+</div>
 </div>
 <div id="current-to-dos" class="section level2">
 <h2>Current To Dos</h2>
@@ -281,7 +374,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <form action="//google.com/search" method="get" accept-charset="UTF-8" role="search">
             <div class="input-group">
                 <input type="search" name="q" class="form-control" placeholder="Search">
-                <input type="hidden" name="sitesearch" value="/">
+                <input type="hidden" name="sitesearch" value="https://blog.datasea.in/">
                 <span class="input-group-btn">
                     <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
                 </span>
