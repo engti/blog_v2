@@ -192,27 +192,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                         <div id="post-content">
                           <p>For any given site, you would typically have many content groups. For example, you are a car manufacturer, and your site has car models that covers a range in the market. How would you see the overlap in interest between your different car models?</p>
-
-<!--more-->
-
-<div id="problem-statement" class="section level2">
-<h2>Problem Statement</h2>
+<p><img src="/img/adobe_segment_post/adobe_workspace.PNG" /><!-- --></p>
+<div id="problem-statement" class="section level3">
+<h3>Problem Statement</h3>
 <ul>
 <li>For a site with n products</li>
 <li>Show the most popular combination of top y products viewed within a visit o And by combination I don’t mean within the same page, what I am looking for is within the same visit in any order</li>
 </ul>
 <p>A quick way to do this is to use the segment overlap feature Adobe Analytics. But you can only do 2 segments at a time. I wanted something that scales up much better and can do things like find the overlap for the top 10, 20, n products. And should be easily adaptable across projects.</p>
 </div>
-<div id="what-it-looks-like-but-is-not" class="section level2">
-<h2>What it looks like, but is not</h2>
+<div id="what-it-looks-like-but-is-not" class="section level3">
+<h3>What it looks like, but is not</h3>
 <p>Also as far as I am aware, this is different from Product Affinity because that is done at a transaction level, and all the products are contained within the same call from the Thank You page. What I was looking for was product viewed separately somewhere within the same visit [or even visitor level if need be].</p>
 </div>
-<div id="result" class="section level2">
-<h2>Result</h2>
+<div id="result" class="section level3">
+<h3>Result</h3>
 <p>Let me showcase the results of the scripts that I have built first: * The below contains the car models from the Kia site for an unspecified time range + I have masked the product names since I am not sure if that’s shareable within the DL * The overlap percentage shows the percentage of visits in which both products were seen * As you can see the product8 model shows the highest overlap with other models + It’s an SUV with an accessible price range + It’s associated models seem to be sedans and cross over vehicles below its price range + So one observation could be that, this is a prime target for upselling</p>
 </div>
-<div id="how-to-use-it-for-your-projects" class="section level2">
-<h2>How to Use it for your Projects</h2>
+<div id="how-to-use-it-for-your-projects" class="section level3">
+<h3>How to Use it for your Projects</h3>
 <ul>
 <li>The solution is created in R</li>
 <li>The script and a guide are contained at this Github <a href="https://github.com/engti/analytics_segment_overlap">link</a></li>
@@ -220,8 +218,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>I have put it up as a Github project, so that you can easily pull it using RStudio. A handy guide is to be found <a href="https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN">here</a>.</p>
 <p>Do note: Since it’s creating overlapping segments it takes a while to run. For instance, for 10 products it needs to make 44 API calls, for 20 products 188 API calls and so on. So if you increase the number of products, the number of requests scales exponentially.</p>
 </div>
-<div id="how-you-can-help" class="section level2">
-<h2>How you can help</h2>
+<div id="how-you-can-help" class="section level3">
+<h3>How you can help</h3>
 <p>Just by itself, the report only showcases some correlation. It doesn’t give you supporting evidence for why such a correlation exists. If we can automate report pull from other elements it might make the report more meaningful. And since it’s on Github, you can submit pull requests to enhance the script.</p>
 </div>
 <div id="current-to-dos" class="section level2">
@@ -307,7 +305,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="panel-body">
         <ul class="nav nav-pills nav-stacked">
             
-            <li><a href="/categories/r">r (1)</a>
+            <li><a href="/categories/analytics">analytics (1)</a>
             </li>
             
         </ul>

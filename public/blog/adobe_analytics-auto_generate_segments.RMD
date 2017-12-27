@@ -2,25 +2,25 @@
 title: 'Adobe Analytics API: Automated Segment Generation'
 author: "Robin Browne"
 date: 2017-12-26
-categories: ["R"]
+categories: ["analytics"]
 tags: ["adobe_analytics", "rstats", "segments"]
 banner : "img/banners/banner-2.jpg"
 description : "Auto generate segments in Adobe Analytics at scale."
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
+library(knitr)
 ```
 For any given site, you would typically have many content groups. For example, you are a car manufacturer, and your site has car models that covers a range in the market. How would you see the overlap in interest between your different car models?
 
-```{r echo=FALSE}
-knitr::asis_output(htmltools::htmlPreserve("
-<!--more-->
-"))
+```{r img_workspace, fig.width = 2}
+# Small fig.width
+include_graphics("/img/adobe_segment_post/adobe_workspace.PNG")
 ```
 
 
-##Problem Statement
+### Problem Statement
 
 -	For a site with n products
 -	Show the most popular combination of top y products viewed within a visit
@@ -29,10 +29,10 @@ o	And by combination I don’t mean within the same page, what I am looking for 
 A quick way to do this is to use the segment overlap feature Adobe Analytics. But you can only do 2 segments at a time. I wanted something that scales up much better and can do things like find the overlap for the top 10, 20, n products. And should be easily adaptable across projects.
 
 
-## What it looks like, but is not
+### What it looks like, but is not
 Also as far as I am aware, this is different from Product Affinity because that is done at a transaction level, and all the products are contained within the same call from the Thank You page. What I was looking for was product viewed separately somewhere within the same visit [or even visitor level if need be].
 
-## Result
+### Result
 Let me showcase the results of the scripts that I have built first:
 * The below contains the car models from the Kia site for an unspecified time range
   + I have masked the product names since I am not sure if that’s shareable within the DL
@@ -42,7 +42,7 @@ Let me showcase the results of the scripts that I have built first:
   + It’s associated models seem to be sedans and cross over vehicles below its price range
   + So one observation could be that,  this is a prime target for upselling
 
-##How to Use it for your Projects
+### How to Use it for your Projects
 *	The solution is created in R
 *	The script and a guide are contained at this Github [link](https://github.com/engti/analytics_segment_overlap)
 
@@ -50,7 +50,7 @@ I have put it up as a Github project, so that you can easily pull it using RStud
 
 Do note: Since it’s creating overlapping segments it takes a while to run. For instance, for 10 products it needs to make 44 API calls, for 20 products 188 API calls and so on. So if you increase the number of products, the number of requests scales exponentially.
 
-##How you can help
+### How you can help
 Just by itself, the report only showcases some correlation. It doesn’t give you supporting evidence for why such a correlation exists. If we can automate report pull from other elements it might make the report more meaningful. And since it’s on Github, you can submit pull requests to enhance the script.
 
 ##Current To Dos
