@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>/blog/2017/12/26/adobe_analytics-auto_generate_segments/</loc>
@@ -10,28 +11,24 @@
     <loc>/tags/adobe_analytics/</loc>
     <lastmod>2017-12-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
-    <author>map[]</author>
   </url>
   
   <url>
     <loc>/categories/analytics/</loc>
     <lastmod>2017-12-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
-    <author>map[]</author>
   </url>
   
   <url>
     <loc>/blog/</loc>
     <lastmod>2017-12-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
-    <author>map[]</author>
   </url>
   
   <url>
     <loc>/categories/</loc>
     <lastmod>2017-12-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
-    <author>map[]</author>
   </url>
   
   <url>
@@ -42,7 +39,6 @@
     <loc>/</loc>
     <lastmod>2017-12-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
-    <author>map[]</author>
   </url>
   
   <url>
@@ -53,21 +49,18 @@
     <loc>/tags/rstats/</loc>
     <lastmod>2017-12-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
-    <author>map[]</author>
   </url>
   
   <url>
     <loc>/tags/segments/</loc>
     <lastmod>2017-12-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
-    <author>map[]</author>
   </url>
   
   <url>
     <loc>/tags/</loc>
     <lastmod>2017-12-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
-    <author>map[]</author>
   </url>
   
 </urlset>

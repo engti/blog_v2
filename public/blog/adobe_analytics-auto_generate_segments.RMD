@@ -56,7 +56,7 @@ Do note: Since it’s creating overlapping segments it takes a while to run. For
 First we load the libraries
 
 ```{r code_library,echo=T,eval=FALSE}
-  ## load library ----
+  # load library ----
     library(tidyverse)
     library(RSiteCatalyst)
     library(jsonlite)
@@ -74,21 +74,21 @@ If you have admin access to Adobe Analytics, it'll be available in your user pro
 #### Define Metadata
 This is a simple showcase, and as such only 2 things are defined here:
 ```{r code_metadata,echo=T,eval=FALSE}
-  ## define metadata ----
+  # define metadata ----
   date_range  <- list(
     "start" = "2017-12-03",
     "end" = "2017-12-09"
   )
   
-  ## define the report suite to pull data from
+  # define the report suite to pull data from
   rsid <- "xxxxxxx-xx-x"
 ```
 
 #### Defining the segment ingredients
 The whole idea is to dynamically generate segments. In that case, what are your ingredients? In this particular case, we have our model names stored in an *eVar*. So we need the top models for the time range defined. We simply make a *QueueRanked* report which tells us the *top **n** * models which we can use to generate the overlapping segment conditions.
 ```{r code_segdef,echo=T,eval=FALSE}
-## get ingredients for segment ----
-  ## get car model name in this instance
+# get ingredients for segment ----
+  # get car model name in this instance
   product_id <- QueueRanked(
     reportsuite.id = rsid,
     date.from = date_range$start,
@@ -105,11 +105,11 @@ The whole idea is to dynamically generate segments. In that case, what are your 
 Now that we know our top models, we want to create segments for the top combinations. We're creating a series of segments with *Model A* + *Model B* in them. We loop through the model combinations, be careful, the number of combinations increases exponentially so it would take a lot of time to execute if you have a large set of inputs.
 
 ```{r code_segCall,echo=T,eval=FALSE}
-## calculate overlap in visits for each model combination
+# calculate overlap in visits for each model combination
   for (i in 1:(nrow(product_id)-1)) {
     for (j in (i + 1) : nrow(product_id)) {
       product_segment <- c(product_id$name[i],product_id$name[j])
-      ## create segment
+      # create segment
       mySegment<- list(container=list(type=unbox("visits"),
                                       rules = data.frame(
                                         name = "models",

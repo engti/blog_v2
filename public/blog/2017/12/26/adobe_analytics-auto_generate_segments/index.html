@@ -77,20 +77,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   
 
   
+  <link rel="stylesheet" href="/css/solarized-dark.css">
+  <script src="/css/solarized-dark.css"></script>
+  
 
    
-      
-      
-      
-      <link href='//cdn.bootcss.com/highlight.js/9.12.0/styles/solarized-dark.min.css' rel='stylesheet' type='text/css' />
-      
-      
 
       
-      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+      <script src="/js/highlight.pack.js"></script>
       
       <script>
-
         hljs.initHighlightingOnLoad();
       </script>
        
@@ -241,7 +237,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="the-code" class="section level2">
 <h2>The Code</h2>
 <p>First we load the libraries</p>
-<pre class="r"><code>  ## load library ----
+<pre class="r"><code>  # load library ----
     library(tidyverse)
     library(RSiteCatalyst)
     library(jsonlite)</code></pre>
@@ -254,20 +250,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="define-metadata" class="section level4">
 <h4>Define Metadata</h4>
 <p>This is a simple showcase, and as such only 2 things are defined here:</p>
-<pre class="r"><code>  ## define metadata ----
+<pre class="r"><code>  # define metadata ----
   date_range  &lt;- list(
     &quot;start&quot; = &quot;2017-12-03&quot;,
     &quot;end&quot; = &quot;2017-12-09&quot;
   )
   
-  ## define the report suite to pull data from
+  # define the report suite to pull data from
   rsid &lt;- &quot;xxxxxxx-xx-x&quot;</code></pre>
 </div>
 <div id="defining-the-segment-ingredients" class="section level4">
 <h4>Defining the segment ingredients</h4>
 <p>The whole idea is to dynamically generate segments. In that case, what are your ingredients? In this particular case, we have our model names stored in an <em>eVar</em>. So we need the top models for the time range defined. We simply make a <em>QueueRanked</em> report which tells us the <em>top <strong>n</strong> </em> models which we can use to generate the overlapping segment conditions.</p>
-<pre class="r"><code>## get ingredients for segment ----
-  ## get car model name in this instance
+<pre class="r"><code># get ingredients for segment ----
+  # get car model name in this instance
   product_id &lt;- QueueRanked(
     reportsuite.id = rsid,
     date.from = date_range$start,
@@ -280,11 +276,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="segment-overlap-api-request" class="section level4">
 <h4>Segment Overlap API request</h4>
 <p>Now that we know our top models, we want to create segments for the top combinations. We’re creating a series of segments with <em>Model A</em> + <em>Model B</em> in them. We loop through the model combinations, be careful, the number of combinations increases exponentially so it would take a lot of time to execute if you have a large set of inputs.</p>
-<pre class="r"><code>## calculate overlap in visits for each model combination
+<pre class="r"><code># calculate overlap in visits for each model combination
   for (i in 1:(nrow(product_id)-1)) {
     for (j in (i + 1) : nrow(product_id)) {
       product_segment &lt;- c(product_id$name[i],product_id$name[j])
-      ## create segment
+      # create segment
       mySegment&lt;- list(container=list(type=unbox(&quot;visits&quot;),
                                       rules = data.frame(
                                         name = &quot;models&quot;,
