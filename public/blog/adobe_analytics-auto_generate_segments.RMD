@@ -117,14 +117,6 @@ Now that we know our top models, we want to create segments for the top combinat
                                         operator = "contains",
                                         value = product_segment
                                       )))
-      ## get data
-      # df1 <- QueueRanked(
-      #   report.suite = "",
-      #   element = c("geoCity"),
-      #   metrics = "",
-      #   date.from = "",
-      #   date.to = "",
-      #   inline.segment = mySegment)
       
       df2 <- QueueOvertime(
         reportsuite.id =  rsid,
