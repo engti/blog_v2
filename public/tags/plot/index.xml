@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blogs on DataSea Blog</title>
-    <link>/blog/</link>
-    <description>Recent content in Blogs on DataSea Blog</description>
+    <title>Plot on DataSea Blog</title>
+    <link>/tags/plot/</link>
+    <description>Recent content in Plot on DataSea Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2017, Robin Browne; all rights reserved.</copyright>
     <lastBuildDate>Fri, 29 Dec 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/plot/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -23,16 +23,6 @@ Some fresh viz ✨ magic from @thomasp85
 &amp;quot;patchwork: the composer of ggplots&amp;quot; https://t.co/FtSNVDmV42 #rstats #ggplot2 #dataviz pic.twitter.com/wjb4xJcF2W
 &amp;mdash; Mara Averick (@dataandme) December 6, 2017  A Basic ExampleFrom Thomas’ Github page:
 Load Library library(ggplot2)library(patchwork)library(dplyr)Output p1 &amp;lt;- ggplot(mtcars) + geom_point(aes(mpg, disp))p2 &amp;lt;- ggplot(mtcars) + geom_boxplot(aes(gear, disp, group = gear))p1 + p2</description>
-    </item>
-    
-    <item>
-      <title>Adobe Analytics API: Automated Segment Generation</title>
-      <link>/blog/2017/12/26/adobe_analytics-auto_generate_segments/</link>
-      <pubDate>Tue, 26 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/2017/12/26/adobe_analytics-auto_generate_segments/</guid>
-      <description>For any given site, you would typically have many content groups. For example, you are a car manufacturer, and your site has car models that covers a range in the market. How would you see the overlap in interest between your different car models?
-Adobe Analytics’ workspace feature allows you to create segment overlap report to see how the users are converging. But unfortunately, you can only do 3 segments, and cannot easily generate n combinations of segments.</description>
     </item>
     
   </channel>

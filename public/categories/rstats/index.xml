@@ -7,19 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2017, Robin Browne; all rights reserved.</copyright>
-    <lastBuildDate>Tue, 26 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 29 Dec 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/rstats/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Adobe Analytics API: Automated Segment Generation</title>
-      <link>/blog/2017/12/26/adobe_analytics-auto_generate_segments/</link>
-      <pubDate>Tue, 26 Dec 2017 00:00:00 +0000</pubDate>
+      <title>Plot Composition in ggplot</title>
+      <link>/blog/2017/12/29/ggplot_composition/</link>
+      <pubDate>Fri, 29 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2017/12/26/adobe_analytics-auto_generate_segments/</guid>
-      <description>For any given site, you would typically have many content groups. For example, you are a car manufacturer, and your site has car models that covers a range in the market. How would you see the overlap in interest between your different car models?
-Problem StatementFor a site with n productsShow the most popular combination of top y products viewed within a visit o And by combination I don’t mean within the same page, what I am looking for is within the same visit in any orderA quick way to do this is to use the segment overlap feature Adobe Analytics.</description>
+      <guid>/blog/2017/12/29/ggplot_composition/</guid>
+      <description>I recently came across a tweet by Mara Averick where she talked about patchwork, a library to help you arrange your ggplot outputs.
+Some fresh viz ✨ magic from @thomasp85
+&amp;quot;patchwork: the composer of ggplots&amp;quot; https://t.co/FtSNVDmV42 #rstats #ggplot2 #dataviz pic.twitter.com/wjb4xJcF2W
+&amp;mdash; Mara Averick (@dataandme) December 6, 2017  A Basic ExampleFrom Thomas’ Github page:
+Load Library library(ggplot2)library(patchwork)library(dplyr)Output p1 &amp;lt;- ggplot(mtcars) + geom_point(aes(mpg, disp))p2 &amp;lt;- ggplot(mtcars) + geom_boxplot(aes(gear, disp, group = gear))p1 + p2</description>
     </item>
     
   </channel>

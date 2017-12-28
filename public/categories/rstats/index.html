@@ -75,6 +75,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta property="og:description" content="Digital Analytics Blog: A walk through of site analytics topics including tagging, reporting and personalisation.   " />
   <meta property="fb:app_id" content="2033742746906998" />
   
+
+  
+  <link rel="stylesheet" href="/css/solarized-dark.css">
+  <script src="/css/solarized-dark.css"></script>
+  
+
+   
+
+      
+      <script src="/js/highlight.pack.localised.v3.js"></script>
+
+      <script>
+        hljs.initHighlightingOnLoad();
+      </script>
+       
 </head>
 
 
@@ -192,15 +207,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <div class="row">
                                 <div class="col-md-4">
                                   <div class="image">
-                                      <a href="/blog/2017/12/26/adobe_analytics-auto_generate_segments/">
+                                      <a href="/blog/2017/12/29/ggplot_composition/">
                                           
-                                          <img src="/img/banners/banner-2.jpg" class="img-responsive" alt="">
+                                          <img src="/img/2_patchwork/post_image.PNG" class="img-responsive" alt="">
                                           
                                       </a>
                                   </div>
                                 </div>
                                 <div class="col-md-8">
-                                    <h2><a href="/blog/2017/12/26/adobe_analytics-auto_generate_segments/">Adobe Analytics API: Automated Segment Generation</a></h2>
+                                    <h2><a href="/blog/2017/12/29/ggplot_composition/">Plot Composition in ggplot</a></h2>
                                     <div class="clearfix">
                                         <p class="author-category">
                                           
@@ -214,12 +229,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                                         </p>
                                         <p class="date-comments">
-                                            <a href="/blog/2017/12/26/adobe_analytics-auto_generate_segments/"><i class="fa fa-calendar-o"></i> December 26, 2017</a>
+                                            <a href="/blog/2017/12/29/ggplot_composition/"><i class="fa fa-calendar-o"></i> December 29, 2017</a>
                                         </p>
                                     </div>
-                                    <p class="intro">For any given site, you would typically have many content groups. For example, you are a car manufacturer, and your site has car models that covers a range in the market. How would you see the overlap in interest between your different car models?
-Problem StatementFor a site with n productsShow the most popular combination of top y products viewed within a visit o And by combination I don’t mean within the same page, what I am looking for is within the same visit in any orderA quick way to do this is to use the segment overlap feature Adobe Analytics.</p>
-                                    <p class="read-more"><a href="/blog/2017/12/26/adobe_analytics-auto_generate_segments/" class="btn btn-template-main">Continue reading</a>
+                                    <p class="intro">I recently came across a tweet by Mara Averick where she talked about patchwork, a library to help you arrange your ggplot outputs.
+Some fresh viz ✨ magic from @thomasp85
+&quot;patchwork: the composer of ggplots&quot; https://t.co/FtSNVDmV42 #rstats #ggplot2 #dataviz pic.twitter.com/wjb4xJcF2W
+&mdash; Mara Averick (@dataandme) December 6, 2017  A Basic ExampleFrom Thomas’ Github page:
+Load Library library(ggplot2)library(patchwork)library(dplyr)Output p1 &lt;- ggplot(mtcars) + geom_point(aes(mpg, disp))p2 &lt;- ggplot(mtcars) + geom_boxplot(aes(gear, disp, group = gear))p1 + p2</p>
+                                    <p class="read-more"><a href="/blog/2017/12/29/ggplot_composition/" class="btn btn-template-main">Continue reading</a>
                                     </p>
                                 </div>
                             </div>
@@ -258,7 +276,7 @@ Problem StatementFor a site with n productsShow the most popular combination 
         <form action="//google.com/search" method="get" accept-charset="UTF-8" role="search">
             <div class="input-group">
                 <input type="search" name="q" class="form-control" placeholder="Search">
-                <input type="hidden" name="sitesearch" value="/">
+                <input type="hidden" name="sitesearch" value="https://blog.datasea.in/">
                 <span class="input-group-btn">
                     <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
                 </span>
@@ -266,6 +284,8 @@ Problem StatementFor a site with n productsShow the most popular combination 
         </form>
     </div>
 </div>
+
+
 
 
 
@@ -282,7 +302,10 @@ Problem StatementFor a site with n productsShow the most popular combination 
     <div class="panel-body">
         <ul class="nav nav-pills nav-stacked">
             
-            <li><a href="/categories/rstats">rstats (1)</a>
+            <li><a href="/categories/analytics"><i class="fa fa-folder"></i>analytics (1)</a>
+            </li>
+            
+            <li><a href="/categories/rstats"><i class="fa fa-folder"></i>rstats (1)</a>
             </li>
             
         </ul>
@@ -307,6 +330,9 @@ Problem StatementFor a site with n productsShow the most popular combination 
             <li><a href="/tags/adobe_analytics"><i class="fa fa-tags"></i> adobe_analytics</a>
             </li>
             
+            <li><a href="/tags/plot"><i class="fa fa-tags"></i> plot</a>
+            </li>
+            
             <li><a href="/tags/rstats"><i class="fa fa-tags"></i> rstats</a>
             </li>
             
@@ -316,7 +342,6 @@ Problem StatementFor a site with n productsShow the most popular combination 
         </ul>
     </div>
 </div>
-
 
 
 
@@ -360,9 +385,22 @@ Problem StatementFor a site with n productsShow the most popular combination 
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
+                        <a href="/blog/2017/12/29/ggplot_composition/">
+                          
+                            <img src="/img/2_patchwork/post_image.PNG" class="img-responsive" alt="Plot Composition in ggplot">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/blog/2017/12/29/ggplot_composition/">Plot Composition in ggplot</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
                         <a href="/blog/2017/12/26/adobe_analytics-auto_generate_segments/">
                           
-                            <img src="/img/banners/banner-2.jpg" class="img-responsive" alt="Adobe Analytics API: Automated Segment Generation">
+                            <img src="/img/adobe_segment_post/post_image.PNG" class="img-responsive" alt="Adobe Analytics API: Automated Segment Generation">
                           
                         </a>
                     </div>
@@ -465,6 +503,9 @@ Problem StatementFor a site with n productsShow the most popular combination 
 
 
 <script src="/js/owl.carousel.min.js"></script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 
 
   </body>

@@ -16,3 +16,7 @@
    padding-bottom: 10px;
    padding-left: 20px;
 }
+
+.twitter-tweet{
+    transform: translate(15%, 0%)
+}
