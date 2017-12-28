@@ -71,6 +71,11 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
   color: #dc322f;
 }
 
+/* Solarized Magenta */
+.hljs-pipes {
+  color: #d33682;
+}
+
 .hljs-formula {
   background: #073642;
 }

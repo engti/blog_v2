@@ -79,6 +79,7 @@ This is a simple showcase, and as such only 2 things are defined here:
     "start" = "2017-12-03",
     "end" = "2017-12-09"
   )
+  TRUE
   
   # define the report suite to pull data from
   rsid <- "xxxxxxx-xx-x"
