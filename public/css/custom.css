@@ -8,3 +8,11 @@
 .box-simple {
   min-height: 230px;
 }
+
+.img-outline {
+   background-color: #efefea;
+   padding-top: 10px;
+   padding-right: 20px;
+   padding-bottom: 10px;
+   padding-left: 20px;
+}
