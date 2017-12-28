@@ -36,6 +36,7 @@ Also as far as I am aware, this is different from Product Affinity because that 
 
 ### Result
 Let me showcase the results of the scripts that I have built first:
+
 * The below contains the car models from the Kia site for an unspecified time range
   + I have masked the product names since I am not sure if that’s shareable within the DL
 * The overlap percentage shows the percentage of visits in which both products were seen
